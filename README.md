@@ -40,3 +40,17 @@ The system processes live video **in real time** and allows filtering detections
 ```bash
 git clone https://github.com/yourusername/construct_secure_ai.git
 cd construct_secure_ai
+---
+
+## 🔮 FUTURE SCOPE
+- 📡 IP Camera / CCTV Integration  
+- 📧 Real-Time Alerts via Email/SMS for violations  
+- 📊 Analytics Dashboard for compliance statistics  
+- 🦺 Additional PPE Types (boots, gloves, ear protection)  
+
+---
+
+## 👥 TEAM MEMBERS
+- **Rida Khan** — Machine Learning  
+- **Ayush Shinde** — Backend Development  
+- **Sanchit Sonawane** — Frontend Development  

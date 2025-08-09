@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PPE Detection - Smart Safety</title>
+    <link rel="stylesheet"{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Safety AI</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            color: #222;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        nav a {
+            margin-left: 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            color: #4a4a4a;
+        }
+        nav a:hover {
+            color: #007bff;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 2rem 2rem;
+        }
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            color: #444;
+            max-width: 700px;
+        }
+        .buttons {
+            margin-top: 2rem;
+        }
+        .buttons a {
+            text-decoration: none;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .buttons a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .illustration {
+            margin-top: 3rem;
+            max-width: 90%;
+        }
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            background-color: #f1f1f1;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Smart Safety AI</h1>
+    <nav>
+        <a href="{% url 'detection' %}">Detection</a>
+        <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Real-Time PPE Detection at the Edge</h2>
+    <p>Ensure industrial safety by detecting helmets, vests, and more with smart deep learning algorithms.</p>
+    <div class="buttons">
+     <a href="/detection/">Start Detection</a>
+        <a href="{% url 'about' %}">Learn More</a>
+    </div>
+
+</section>
+
+<footer>
+    © 2025 Smart Safety AI. All rights reserved.
+</footer>
+
+
+    
+</body>
+</html>

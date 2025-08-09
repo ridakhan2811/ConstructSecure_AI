@@ -42,7 +42,7 @@ git clone https://github.com/yourusername/construct_secure_ai.git
 cd construct_secure_ai
 ```
 ---
-##🔮 FUTURE SCOPE
+## 🔮 FUTURE SCOPE
 - **📡 IP Camera / CCTV Integration**
 
 - **📧 Real-Time Alerts via Email/SMS for violations**
@@ -52,7 +52,7 @@ cd construct_secure_ai
 - **🦺 Additional PPE Types (boots, gloves, ear protection)**
 ---
 
-##👥 TEAM MEMBERS
+## 👥 TEAM MEMBERS
 - **Rida Khan** : Machine Learning
 
 - **Ayush Shinde** : Backend Development

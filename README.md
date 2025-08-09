@@ -50,6 +50,7 @@ cd construct_secure_ai
 - **📊 Analytics Dashboard for compliance statistics**
 
 - **🦺 Additional PPE Types (boots, gloves, ear protection)**
+---
 
 ##👥 TEAM MEMBERS
 - **Rida Khan** : Machine Learning

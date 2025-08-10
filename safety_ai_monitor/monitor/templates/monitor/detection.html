@@ -54,7 +54,6 @@
     const resultImage = document.getElementById('result-image');
     let detectionInterval;
 
-    // Request webcam access
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
             video.srcObject = stream;
@@ -68,14 +67,13 @@
         startBtn.disabled = true;
     }
 
-    // Function to capture and send a frame
     async function sendFrameForDetection() {
         const context = canvas.getContext('2d');
         context.drawImage(video, 0, 0, canvas.width, canvas.height);
         const dataURL = canvas.toDataURL('image/jpeg');
 
         try {
-            const response = await fetch('/your_detection_endpoint/', {
+            const response = await fetch('/detect_frame/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -85,17 +83,15 @@
             });
 
             const result = await response.json();
-            
-            // Update the UI with the real-time result
+
             if (result.success) {
                 statusDiv.className = 'alert alert-success text-center';
-                statusDiv.textContent = 'All PPE measures are being worn. Keep up the good work!';
+                statusDiv.textContent = 'All PPE measures are being worn.';
             } else {
                 statusDiv.className = 'alert alert-danger text-center';
-                statusDiv.textContent = 'Warning: Missing PPE! Please ensure all protective measures are in place.';
+                statusDiv.textContent = 'Warning: Missing PPE!';
             }
 
-            // Optional: Display the processed image from the server if your endpoint returns it
             if (result.processed_image_data) {
                 resultImage.src = 'data:image/jpeg;base64,' + result.processed_image_data;
                 resultImageContainer.style.display = 'flex';
@@ -106,20 +102,18 @@
         } catch (error) {
             console.error('Detection failed:', error);
             statusDiv.className = 'alert alert-warning text-center';
-            statusDiv.textContent = 'Connection Error: Could not reach the detection server.';
+            statusDiv.textContent = 'Connection Error.';
         }
     }
 
-    // Start detection loop
     startBtn.addEventListener('click', function() {
         startBtn.disabled = true;
         stopBtn.disabled = false;
         statusDiv.className = 'alert alert-info text-center';
         statusDiv.textContent = 'Monitoring started...';
-        detectionInterval = setInterval(sendFrameForDetection, 2000); // Send a frame every 2 seconds
+        detectionInterval = setInterval(sendFrameForDetection, 2000);
     });
 
-    // Stop detection loop
     stopBtn.addEventListener('click', function() {
         clearInterval(detectionInterval);
         startBtn.disabled = false;

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>PPE Detection Monitor</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f7fb;
+}
+header {
+    background-color: #fff;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+header nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+}
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+}
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+    flex: 1;
+    min-width: 300px;
+}
+#video {
+    width: 100%;
+    height: auto;
+    background: black;
+    border-radius: 10px;
+}
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+.start-btn { background-color: orange; color: white; }
+.stop-btn { background-color: red; color: white; }
+.status-green { color: green; font-weight: bold; }
+.status-red { color: red; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<header>
+    <div><strong style="color:orange;">SecureConstruct AI</strong></div>
+    <nav>
+        <a href="{% url 'index' %}">Home</a>
+       <a href="{% url 'about' %}">About</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="card" style="flex:2">
+        <h2>Live Camera Feed</h2>
+        <video id="video" autoplay playsinline></video>
+        <br><br>
+        <button class="start-btn" onclick="startCamera()">Start Monitoring</button>
+        <button class="stop-btn" onclick="stopCamera()">Stop Monitoring</button>
+<button onclick="startCamera()">Start Camera</button>
+
+<video id="cameraFeed" autoplay playsinline style="width: 100%; max-width: 500px; border-radius: 10px; display: none;"></video>
+<script>
+function startCamera() {
+    const video = document.getElementById('cameraFeed');
+
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(stream => {
+            video.srcObject = stream;
+            video.style.display = 'block'; // Show video after starting
+        })
+        .catch(error => {
+            console.error("Error accessing camera:", error);
+            alert("Could not access camera. Please allow camera permissions.");
+        });
+}
+</script>
+
+
+    </div>
+
+    <div style="flex:1">
+        <div class="card">
+            <h3>Compliance Status</h3>
+            <p>Workers Detected: <span id="workers">0</span></p>
+            <p class="status-green">Compliant: <span id="compliant">0</span></p>
+            <p class="status-red">Non-Compliant: <span id="noncompliant">0</span></p>
+        </div>
+        <div class="card">
+            <h3>Monitor PPE Items</h3>
+            <p>🪖 Hard Hat</p>
+            <p>🦺 Safety Vest</p>
+            <p>😷 Face Mask</p>
+            <p>🧤 Safety Gloves</p>
+            <p>👓 Safety Glasses</p>
+            <p>🥾 Safety Boots</p>
+        </div>
+    </div>
+</div>
+
+<script>
+let video = document.getElementById('video');
+let stream;
+
+async function startCamera() {
+    try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        video.srcObject = stream;
+    } catch (err) {
+        alert("Error accessing webcam: " + err);
+    }
+}
+
+function stopCamera() {
+    if (stream) {
+        stream.getTracks().forEach(track => track.stop());
+        video.srcObject = null;
+    }
+}
+</script>
+
+</body>
+</html>

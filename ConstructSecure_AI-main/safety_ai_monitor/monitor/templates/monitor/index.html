@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureConstruct AI - PPE Detection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="navbar">
+  <div class="navbar-left">
+    <span class="logo">SecureConstruct <span class="highlight">AI</span></span>
+  </div>
+  
+  <div class="navbar-center">
+    <a href="/detection">Detection</a>
+    <a href="/about">About</a>
+  </div>
+</nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-gray-50 to-white py-16">
+        <div class="container mx-auto flex flex-col-reverse md:flex-row items-center px-6">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+                    Smart PPE Detection for <span class="text-orange-500">Safer Construction</span>
+                </h1>
+                <p class="text-gray-600 mt-4 mb-6">
+                    Revolutionary AI-powered monitoring system that ensures Personal Protective Equipment compliance in real-time, protecting your workers and reducing workplace accidents.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="{% url 'detection' %}" class="bg-orange-500 text-white px-5 py-3 rounded font-semibold hover:bg-orange-600 transition">Start Detection</a>
+                    <a href="#" class="bg-blue-600 text-white px-5 py-3 rounded font-semibold hover:bg-blue-700 transition">Learn More</a>
+                </div>
+            </div>
+            
+
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold mb-4">Advanced Safety Monitoring</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-12">
+                Leverage cutting-edge AI technology to create safer construction environments with automated PPE compliance monitoring.
+            </p>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+                    <div class="text-orange-500 text-4xl mb-4">👁</div>
+                    <h3 class="font-bold text-lg mb-2">Real-time Monitoring</h3>
+                    <p class="text-gray-600 text-sm">
+                        Live camera feeds with instant PPE detection using advanced YOLO AI technology.
+                    </p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+                    <div class="text-orange-500 text-4xl mb-4">🛡</div>
+                    <h3 class="font-bold text-lg mb-2">Safety Compliance</h3>
+                    <p class="text-gray-600 text-sm">
+                        Ensure OSHA compliance and reduce workplace accidents with automated monitoring.
+                    </p>
+                </div>
+                <div class="bg-white shadow-md rounded-lg p-6 hover:shadow-lg transition">
+                    <div class="text-orange-500 text-4xl mb-4">⚡</div>
+                    <h3 class="font-bold text-lg mb-2">Instant Alerts</h3>
+                    <p class="text-gray-600 text-sm">
+                        Immediate notifications when safety violations are detected on your construction site.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 bg-orange-50">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Enhance Your Site Safety?</h2>
+            <p class="text-gray-600 mb-6">
+                Start monitoring PPE compliance with our intelligent detection system today.
+            </p>
+            <a href="{% url 'detection' %}" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition">
+                Begin Monitoring →
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>

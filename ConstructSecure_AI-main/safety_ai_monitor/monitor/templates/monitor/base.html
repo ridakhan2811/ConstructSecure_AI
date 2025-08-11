@@ -6,72 +6,38 @@
     {% load static %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0; padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header, footer {
-            background: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            padding: 2rem;
-        }
-    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-800">
 
-    <!-- Header -->
-    <header>
-        <h1>Safety AI Monitor</h1>
-        <nav>
-            <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'detection' %}">Detection</a>
-            <a href="{% url 'about' %}">About</a>
-        </nav>
-    </header>
+<!-- Small Tailwind Navbar -->
+<nav class="bg-gray-900 text-white shadow-sm py-2">
+    <div class="container mx-auto flex justify-between items-center px-4">
+        
+        <!-- Logo -->
+        <div class="text-lg font-bold">
+            Safety <span class="text-orange-400">AI</span> Monitor
+        </div>
 
+        <!-- Nav Links -->
+        <div class="space-x-4 text-sm font-medium">
+            <a href="{% url 'index' %}" class="hover:text-orange-400 transition">Home</a>
+            <a href="{% url 'detection' %}" class="hover:text-orange-400 transition">Detection</a>
+            <a href="{% url 'about' %}" class="hover:text-orange-400 transition">About</a>
+        </div>
+    </div>
+</nav>
 
-    <!-- Main content block -->
-    <main>
-        {% block content %}
-        {% endblock %}
-    </main>
+<!-- Main Content -->
+<main class="p-6">
+    {% block content %}
+    {% endblock %}
+</main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Safety AI Team. All rights reserved.</p>
-    </footer>
-<script>
-document.querySelector(".dropdown-btn").addEventListener("click", function() {
-  document.querySelector(".dropdown-menu").classList.toggle("show");
-});
-
-window.addEventListener("click", function(e) {
-  if (!e.target.matches('.dropdown-btn')) {
-    document.querySelector(".dropdown-menu").classList.remove("show");
-  }
-});
-</script>
-<style>
-.show {
-  display: block;
-}
-</style>
+<!-- Footer -->
+<footer class="bg-gray-900 text-white text-center py-3 text-sm">
+    &copy; 2025 Safety AI Team. All rights reserved.
+</footer>
 
 </body>
 </html>

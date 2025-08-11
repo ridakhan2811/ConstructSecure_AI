@@ -1,173 +1,89 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About - SecureConstruct_AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        body {
-            background-color: #f9fafb;
-            color: #1f2937;
-        }
-        header {
-            background: white;
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        header .logo {
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            color: #f97316;
-            font-size: 1.2rem;
-        }
-        header nav a {
-            margin: 0 1rem;
-            text-decoration: none;
-            color: #374151;
-            font-weight: 500;
-        }
-        header nav a:hover {
-            color: #f97316;
-        }
-        .btn-primary {
-            background: #f97316;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .btn-primary:hover {
-            background: #ea580c;
-        }
-        section {
-            padding: 4rem 8%;
-            text-align: center;
-        }
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-        }
-        h1 span {
-            color: #f97316;
-        }
-        p {
-            margin-top: 1rem;
-            font-size: 1rem;
-            color: #4b5563;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .card-container {
-            margin-top: 3rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        .card i {
-            font-size: 2rem;
-            color: #f97316;
-            margin-bottom: 1rem;
-        }
-        .card h3 {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        footer {
-            background: white;
-            padding: 1.5rem 5%;
-            text-align: center;
-            font-size: 0.9rem;
-            color: #6b7280;
-            border-top: 1px solid #e5e7eb;
-        }
-    </style>
 </head>
-<body>
-    <header>
-        <div class="logo"><i class="fa-solid fa-helmet-safety"></i>&nbsp; SecureConstruct_AI</div>
-        <nav>
-            <a href="{% url 'index' %}">Home</a>
-            <a href="{% url 'detection' %}">Detection</a>
-            
-        </nav>
-      
-    </header>
+<body class="bg-gray-50 text-gray-800 font-inter">
 
-    <section>
-        <h1>About <span>SecureConstruct_AI</span></h1>
-        <p>
-            SecureConstruct_AI is dedicated to making construction sites safer using cutting-edge 
-            artificial intelligence and computer vision technology. Our platform detects Personal 
-            Protective Equipment (PPE) compliance in real-time, ensuring every worker on site 
-            follows safety protocols.
-        </p>
-
-        <div class="card-container">
-            <div class="card">
-                <i class="fa-solid fa-bullseye"></i>
-                <h3>Our Mission</h3>
-                <p>To leverage AI technology to eliminate safety hazards and protect construction workers worldwide.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-lightbulb"></i>
-                <h3>Innovation</h3>
-                <p>We combine YOLO AI detection, deep learning, and cloud computing to provide unmatched accuracy and speed.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-handshake"></i>
-                <h3>Commitment</h3>
-                <p>We work with industry leaders to constantly refine our safety solutions for evolving worksite needs.</p>
-            </div>
+<!-- Navbar -->
+<nav class="bg-white shadow-md py-3">
+    <div class="container mx-auto flex justify-between items-center px-6">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2 text-2xl font-bold text-gray-900">
+            <i class="fa-solid fa-helmet-safety text-orange-500"></i>
+            <span>SecureConstruct <span class="text-orange-500">AI</span></span>
         </div>
-    </section>
-
-    <section>
-        <h1>Our <span>Values</span></h1>
-        <div class="card-container">
-            <div class="card">
-                <i class="fa-solid fa-user-shield"></i>
-                <h3>Safety First</h3>
-                <p>Every feature we design has worker safety as the top priority.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-rocket"></i>
-                <h3>Performance</h3>
-                <p>Delivering sub-100ms detection speeds to enable instant alerts.</p>
-            </div>
-            <div class="card">
-                <i class="fa-solid fa-globe"></i>
-                <h3>Scalability</h3>
-                <p>From small sites to large industrial projects, we scale effortlessly.</p>
-            </div>
+        <!-- Links -->
+        <div class="space-x-6">
+            <a href="{% url 'index' %}" class="text-gray-700 hover:text-orange-500 transition">Home</a>
+            <a href="{% url 'about' %}" class="text-gray-700 hover:text-orange-500 transition">About</a>
+            <a href="{% url 'detection' %}" class="text-gray-700 hover:text-orange-500 transition">Detection</a>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <footer>
-        &copy; 2025 SecureConstruct_AI. All rights reserved.
-    </footer>
+<!-- About Section -->
+<section class="px-6 py-12 text-center">
+    <h1 class="text-4xl font-bold mb-4">About <span class="text-orange-500">SecureConstruct_AI</span></h1>
+    <p class="max-w-3xl mx-auto text-gray-600">
+        SecureConstruct_AI is dedicated to making construction sites safer using cutting-edge 
+        artificial intelligence and computer vision technology. Our platform detects Personal 
+        Protective Equipment (PPE) compliance in real-time, ensuring every worker on site 
+        follows safety protocols.
+    </p>
+
+    <div class="grid gap-6 md:grid-cols-3 mt-10">
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <i class="fa-solid fa-bullseye text-3xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Our Mission</h3>
+            <p class="text-gray-600 mt-2">To leverage AI technology to eliminate safety hazards and protect construction workers worldwide.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <i class="fa-solid fa-lightbulb text-3xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Innovation</h3>
+            <p class="text-gray-600 mt-2">We combine YOLO AI detection, deep learning, and cloud computing to provide unmatched accuracy and speed.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <i class="fa-solid fa-handshake text-3xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Commitment</h3>
+            <p class="text-gray-600 mt-2">We work with industry leaders to constantly refine our safety solutions for evolving worksite needs.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="px-6 py-12 text-center bg-gray-100">
+    <h1 class="text-4xl font-bold mb-4">Our <span class="text-orange-500">Values</span></h1>
+    <div class="grid gap-6 md:grid-cols-3 mt-10">
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <i class="fa-solid fa-user-shield text-3xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Safety First</h3>
+            <p class="text-gray-600 mt-2">Every feature we design has worker safety as the top priority.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <i class="fa-solid fa-rocket text-3xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Performance</h3>
+            <p class="text-gray-600 mt-2">Delivering sub-100ms detection speeds to enable instant alerts.</p>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow hover:shadow-lg transition">
+            <i class="fa-solid fa-globe text-3xl text-orange-500 mb-3"></i>
+            <h3 class="text-lg font-semibold">Scalability</h3>
+            <p class="text-gray-600 mt-2">From small sites to large industrial projects, we scale effortlessly.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-white border-t border-gray-200 py-4 text-center text-sm text-gray-500">
+    &copy; 2025 SecureConstruct_AI. All rights reserved.
+</footer>
+
 </body>
 </html>
+git clone https://github.com/ridakhan2811/ConstructSecure_AI.git

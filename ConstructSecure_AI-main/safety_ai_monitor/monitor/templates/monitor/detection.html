@@ -1,28 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>PPE Detection Monitor</title>
+<script src="https://cdn.tailwindcss.com"></script>
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f7fb;
-}
-header {
-    background-color: #fff;
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-}
-header nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    font-weight: bold;
-    color: #333;
-}
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -55,66 +38,84 @@ button {
 .stop-btn { background-color: red; color: white; }
 .status-green { color: green; font-weight: bold; }
 .status-red { color: red; font-weight: bold; }
+.ppe-list label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+.ppe-list input {
+    margin-right: 8px;
+}
 </style>
 </head>
-<body>
+<body class="bg-gray-50">
 
-<header>
-    <div><strong style="color:orange;">SecureConstruct AI</strong></div>
-    <nav>
-        <a href="{% url 'index' %}">Home</a>
-       <a href="{% url 'about' %}">About</a>
-    </nav>
-</header>
+<!-- Responsive Navbar -->
+<nav class="bg-white shadow-md py-2">
+    <div class="container mx-auto flex justify-between items-center px-6">
 
+        <!-- Clickable Logo -->
+        <a href="{% url 'index' %}" class="text-2xl font-bold text-gray-900 hover:text-orange-500 transition">
+            SecureConstruct <span class="text-orange-500">AI</span>
+        </a>
+
+        <!-- Desktop Links -->
+        <div class="hidden md:flex space-x-4">
+            <a href="{% url 'index' %}" class="text-gray-700 hover:text-orange-500 transition">Home</a>
+            <a href="{% url 'about' %}" class="text-gray-700 hover:text-orange-500 transition">About</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+            <button id="menu-btn" class="focus:outline-none">
+                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="menu" class="hidden md:hidden px-6 pb-4">
+        <a href="{% url 'index' %}" class="block py-2 text-gray-700 hover:text-orange-500 transition">Home</a>
+        <a href="{% url 'about' %}" class="block py-2 text-gray-700 hover:text-orange-500 transition">About</a>
+    </div>
+</nav>
+
+<!-- Main Content -->
 <div class="container">
     <div class="card" style="flex:2">
-        <h2>Live Camera Feed</h2>
+        <h2 class="text-xl font-bold mb-2">Live Camera Feed</h2>
         <video id="video" autoplay playsinline></video>
         <br><br>
         <button class="start-btn" onclick="startCamera()">Start Monitoring</button>
         <button class="stop-btn" onclick="stopCamera()">Stop Monitoring</button>
-<button onclick="startCamera()">Start Camera</button>
-
-<video id="cameraFeed" autoplay playsinline style="width: 100%; max-width: 500px; border-radius: 10px; display: none;"></video>
-<script>
-function startCamera() {
-    const video = document.getElementById('cameraFeed');
-
-    navigator.mediaDevices.getUserMedia({ video: true })
-        .then(stream => {
-            video.srcObject = stream;
-            video.style.display = 'block'; // Show video after starting
-        })
-        .catch(error => {
-            console.error("Error accessing camera:", error);
-            alert("Could not access camera. Please allow camera permissions.");
-        });
-}
-</script>
-
-
     </div>
 
     <div style="flex:1">
         <div class="card">
-            <h3>Compliance Status</h3>
+            <h3 class="text-lg font-bold mb-2">Compliance Status</h3>
             <p>Workers Detected: <span id="workers">0</span></p>
             <p class="status-green">Compliant: <span id="compliant">0</span></p>
             <p class="status-red">Non-Compliant: <span id="noncompliant">0</span></p>
         </div>
         <div class="card">
-            <h3>Monitor PPE Items</h3>
-            <p>🪖 Hard Hat</p>
-            <p>🦺 Safety Vest</p>
-            <p>😷 Face Mask</p>
-            <p>🧤 Safety Gloves</p>
-            <p>👓 Safety Glasses</p>
-            <p>🥾 Safety Boots</p>
+            <h3 class="text-lg font-bold mb-2">Monitor PPE Items</h3>
+            <div class="ppe-list">
+                <label><input type="checkbox" checked> 🪖 Hard Hat</label>
+                <label><input type="checkbox" checked> 🦺 Safety Vest</label>
+                <label><input type="checkbox" checked> 😷 Face Mask</label>
+                <label><input type="checkbox" checked> 🧤 Safety Gloves</label>
+                <label><input type="checkbox" checked> 👓 Safety Glasses</label>
+                <label><input type="checkbox" checked> 🥾 Safety Boots</label>
+            </div>
         </div>
     </div>
 </div>
 
+<!-- JS for Camera & Mobile Menu -->
 <script>
 let video = document.getElementById('video');
 let stream;
@@ -134,6 +135,13 @@ function stopCamera() {
         video.srcObject = null;
     }
 }
+
+const menuBtn = document.getElementById('menu-btn');
+const menu = document.getElementById('menu');
+
+menuBtn.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
+});
 </script>
 
 </body>
